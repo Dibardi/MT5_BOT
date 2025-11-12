@@ -1,0 +1,48 @@
+{
+  "document_id": "MT5B_CONTINUIDAD_1.0",
+  "project": "MT5_BOT",
+  "version": "1.0",
+  "date_created": "2025-11-12",
+  "owners": {
+    "human": "Luis Longobardi",
+    "assistant": "GPT-5"
+  },
+  "purpose": "Garantizar la continuidad, estabilidad y trazabilidad del proyecto MT5_BOT.",
+  "commitments": {
+    "assistant": {
+      "transparency": true,
+      "persistence_via_github": true,
+      "no_destruction_without_consent": true,
+      "traceable_changes": true,
+      "auto_documentation": true
+    },
+    "human": {
+      "repository_control": true,
+      "local_execution": true,
+      "manual_commit_push": true,
+      "validation_before_major_changes": true
+    }
+  },
+  "workflow": {
+    "main_branch": "main",
+    "dev_branch": "dev",
+    "logs_path": "Docs/Logs/MLLogs",
+    "updates_file": "Docs/Updates/MT5_CONTINUIDAD.md",
+    "backup_policy": "manual_github_commit"
+  },
+  "protection_rules": {
+    "ignore_env": [".venv", "env"],
+    "ignore_temp": ["*.zip", "*.bak", "*.tmp", "*.log"],
+    "ignore_os": [".DS_Store", "desktop.ini", "Thumbs.db"]
+  },
+  "philosophy": {
+    "principles": [
+      "Transparencia",
+      "Estabilidad",
+      "Colaboración técnica responsable",
+      "Documentación continua"
+    ],
+    "motto": "Ningún cambio sin consentimiento, ningún progreso sin registro."
+  },
+  "status": "active"
+}
