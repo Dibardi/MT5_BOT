@@ -1,0 +1,19 @@
+{
+  "data_source": "yfinance",
+  "storage_path": "./infra/data/",
+  "update_frequency": "daily",
+  "start_date": "2018-01-01",
+  "end_date": "today",
+  "tickers": [
+    "PETR4.SA",
+    "VALE3.SA",
+    "ITUB4.SA",
+    "GGBR4.SA",
+    "MGLU3.SA",
+    "MRVE3.SA",
+    "ELET3.SA",
+    "SBSP3.SA",
+    "ABEV3.SA",
+    "VIVT3.SA"
+  ]
+}
