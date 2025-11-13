@@ -1,0 +1,31 @@
+(.venv) PS C:\MT5_BOT> python -m ml.backtesting.backtest --signals ml/signals/generated_signals_master.csv --hold 5 --capital 10000 --commission 6.0 --slippage 0.0005  
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_master_20251113_140235.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_master_20251113_140235.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_master_20251113_140235.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_master_REV_20251113_140303.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_master_REV_20251113_140303.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_master_REV_20251113_140303.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_PETR4_20251112_231258_20251113_140303.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_PETR4_20251112_231258_20251113_140303.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_PETR4_20251112_231258_20251113_140303.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_PETR4_20251112_232337_20251113_140326.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_PETR4_20251112_232337_20251113_140326.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_PETR4_20251112_232337_20251113_140326.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_PETR4_20251112_233158_20251113_140349.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_PETR4_20251112_233158_20251113_140349.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_PETR4_20251112_233158_20251113_140349.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_PETR4_20251113_135156_20251113_140411.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_PETR4_20251113_135156_20251113_140411.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_PETR4_20251113_135156_20251113_140411.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_VALE3_20251112_231258_20251113_140433.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_VALE3_20251112_231258_20251113_140433.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_VALE3_20251112_231258_20251113_140433.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_VALE3_20251112_232337_20251113_140438.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_VALE3_20251112_232337_20251113_140438.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_VALE3_20251112_232337_20251113_140438.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_VALE3_20251112_233158_20251113_140442.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_VALE3_20251112_233158_20251113_140442.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_VALE3_20251112_233158_20251113_140442.json
+[BACKTEST] Trade log: ml\backtesting\output\trade_log_generated_signals_v1_3_VALE3_20251113_135156_20251113_140447.csv
+[BACKTEST] Equity curve: ml\backtesting\output\equity_curve_generated_signals_v1_3_VALE3_20251113_135156_20251113_140447.csv
+[BACKTEST] Report: Docs\Reports\backtest_report_generated_signals_v1_3_VALE3_20251113_135156_20251113_140447.json

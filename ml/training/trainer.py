@@ -1,78 +1,70 @@
-# ==============================================
-# MT5_BOT — ml/training/trainer.py (versión 1.1.3)
-# Última actualización: 2025-11-12
-# ==============================================
-# Corrección: prints con f-strings evaluables y compatibilidad de RMSE en evaluate_model.
-# ----------------------------------------------
+# ml/training/trainer.py
+"""
+Trainer for ML v1.2 - RandomForestRegressor
+Fixed RMSE computation for compatibility with older sklearn versions.
+"""
 
-import pandas as pd
 import json
 from pathlib import Path
+import joblib
+import numpy as np
 from sklearn.ensemble import RandomForestRegressor
-from model_utils import split_data, train_model, evaluate_model, save_model
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from ml.training.dataset_builder import build_dataset
 
-DATA_PATH = Path(__file__).resolve().parents[2] / "infra" / "processed" / "merged_data.csv"
-CONFIG_PATH = Path(__file__).resolve().parent / "config_ml.json"
-LOG_PATH = Path(__file__).resolve().parents[2] / "Docs" / "Logs" / "MLLogs"
-MODEL_PATH = Path(__file__).resolve().parents[1] / "models" / "randomforest_model.pkl"
+OUTPUT_MODEL = Path('ml/models')
+OUTPUT_MODEL.mkdir(parents=True, exist_ok=True)
 
-def load_config():
-    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+LOGS = Path('Docs/Logs/MLLogs')
+LOGS.mkdir(parents=True, exist_ok=True)
 
 def main():
-    cfg = load_config()
-    print(f"[INFO] Configuración cargada: {cfg['model_type']}")
+    print('[TRAINER] Construyendo dataset...')
+    X, y = build_dataset()
 
+    if len(X) < 50:
+        print('[ERROR] Dataset muy pequeño:', len(X))
+        return
 
-    df = pd.read_csv(DATA_PATH, index_col=0, parse_dates=True)
-    df.index.name = "Date"
-    print(f"[INFO] Datos cargados: {len(df)} filas")
-
-
-    features = cfg.get("features", [])
-    target = cfg["target_column"]
-
-    # Keep only the necessary columns: features + target
-    cols_needed = features + [target]
-    df = df[cols_needed].dropna()
-    print(f"[INFO] Features: {features} | Target: {target} | Filas válidas: {len(df)}")
-
-
-    # Split using features list to avoid non-numeric columns
-    X_train, X_test, y_train, y_test = split_data(df, target, features=features, test_size=cfg["validation_split"], random_state=cfg["random_state"]) 
-
-    print("[TRAIN] Entrenando modelo RandomForestRegressor...")
-    model = RandomForestRegressor(
-        n_estimators=cfg["n_estimators"],
-        max_depth=cfg["max_depth"],
-        random_state=cfg["random_state"]
+    # Split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
     )
-    model = train_model(model, X_train, y_train)
-    print("[OK] Entrenamiento completado.")
 
-    metrics = evaluate_model(model, X_test, y_test)
-    print(f"[METRICS] MAE={metrics['MAE']:.6f} | RMSE={metrics['RMSE']:.6f} | R²={metrics['R2']:.4f}")
+    print(f'[TRAIN] Entrenando RandomForestRegressor con {len(X_train)} filas...')
+    model = RandomForestRegressor(
+        n_estimators=100,
+        n_jobs=-1,
+        random_state=42
+    )
+    model.fit(X_train, y_train)
 
+    preds = model.predict(X_test)
 
-    save_model(model, MODEL_PATH)
+    # Compute RMSE manually for full compatibility
+    mse = mean_squared_error(y_test, preds)
+    rmse = float(np.sqrt(mse))
 
-    LOG_PATH.mkdir(parents=True, exist_ok=True)
-    report = {
-        "model": cfg["model_type"],
-        "parameters": {
-            "n_estimators": cfg["n_estimators"],
-            "max_depth": cfg["max_depth"],
-            "validation_split": cfg["validation_split"]
-        },
-        "metrics": metrics,
-        "timestamp": "2025-11-12"
+    metrics = {
+        'MAE': float(mean_absolute_error(y_test, preds)),
+        'RMSE': rmse,
+        'R2': float(r2_score(y_test, preds)),
+        'n_train': int(len(X_train)),
+        'n_test': int(len(X_test))
     }
-    report_path = LOG_PATH / "training_report.json"
-    with open(report_path, "w", encoding="utf-8") as f:
-        json.dump(report, f, indent=2)
-    print(f"[OK] Reporte guardado en {report_path}")
 
+    # Save model
+    model_file = OUTPUT_MODEL / 'model_v1_2_rfr.pkl'
+    joblib.dump(model, model_file)
 
-if __name__ == "__main__":
+    # Save metrics
+    metrics_file = LOGS / 'metrics_v1_2.json'
+    with open(metrics_file, 'w', encoding='utf-8') as f:
+        json.dump(metrics, f, indent=2)
+
+    print('[OK] Entrenamiento completado. Metrics saved to', metrics_file)
+    print('[OK] Model saved to', model_file)
+
+if __name__ == '__main__':
     main()

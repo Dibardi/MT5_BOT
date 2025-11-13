@@ -1,0 +1,11 @@
+{
+  "value": 0.6639831259869745,
+  "params": {
+    "model": "rfr",
+    "rfr_n_estimators": 677,
+    "rfr_max_depth": 14,
+    "rfr_min_samples_split": 4,
+    "rfr_min_samples_leaf": 2,
+    "rfr_max_features": "sqrt"
+  }
+}
