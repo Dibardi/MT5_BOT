@@ -1,8 +1,0 @@
-{
-  "signals": "ml/signals/tickers/generated_signals_v1_6_PETR4_FIXED.csv",
-  "trade_log": "ml\\backtesting\\output_v1_5\\trade_log_generated_signals_v1_6_PETR4_FIXED_20251113_171916.csv",
-  "equity_curve": "ml\\backtesting\\output_v1_5\\equity_curve_generated_signals_v1_6_PETR4_FIXED_20251113_171916.csv",
-  "n_trades": 667,
-  "final_equity": 3.8471168457159915e+78,
-  "timestamp": "20251113_171916"
-}

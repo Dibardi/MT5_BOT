@@ -1,25 +1,2 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
 .venv/
-env/
-.venv/**
-env/**
-
-# Data y logs
-infra/processed/*.csv
-Docs/Logs/MLLogs/*.json
-
-# IDE / Sistema operativo
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Archivos temporales
-*.zip
-*.bak
-*.tmp
-*.log
+__pycache__/

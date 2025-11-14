@@ -1,6 +1,0 @@
-{
-  "model_type": "RandomForestRegressor",
-  "target": "target_return_5d",
-  "test_size": 0.2,
-  "random_state": 42
-}
